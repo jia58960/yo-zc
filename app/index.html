@@ -1,0 +1,67 @@
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>YoZc - Yet another amazing AngularJS app</title>
+  <meta name="description" content="Yet another amazing AngularJS app">
+
+<!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/2.2.0/es5-shim.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
+
+  <!-- Sets initial viewport load and disables zooming  -->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+  <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+  <!-- <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> -->
+  <!-- Set a shorter title for iOS6 devices when saved to home screen -->
+  <!-- <meta name="apple-mobile-web-app-title" content="YoZc"> -->
+
+  <!-- Properties for Google+ snippets -->
+  <meta property="og:title" content="YoZc">
+  <meta property="og:description" content="Yet another amazing AngularJS app">
+  <meta property="og:image" content="https://github.global.ssl.fastly.net/images/modules/logos_page/Octocat.png">
+
+  <!-- Author of this application -->
+  <link rel="author" href="https://github.com/jia58960"> 
+  <link rel="icon" href="http://angularjs.org/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="http://angularjs.org/favicon.ico" type="image/x-icon">
+
+  <!-- build:css styles/components.min.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="bower_components/flexslider/flexslider.css"/>
+  <link rel="stylesheet" href="bower_components/tipped/tipped.css"/>
+  <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.css"/>
+  <!-- build:css(.tmp) styles/main.min.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/ng-animation.css"/>
+  <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.min.css"/>
+  <link rel="stylesheet" href="styles/slider.css"/>
+
+  <!-- endbuild -->
+
+  <!-- custom styles -->
+
+</head>
+
+  <body>
+    <div class="index_wrap" ui-view></div>
+
+    <div class="jumbotron loading-jumbo" ng-show="doingResolve" style="position: fixed;top: 45%;left: 47.6%; background: none !important;">
+      <h2><!--<i class="fa fa-repeat fa-2x text-warning fa-spin"></i>-->
+        <img src="images/ajax-loader.gif" alt=""/></h2>
+    </div>
+
+    <script src="bower_components/requirejs/require.js" data-main="scripts/main"></script>
+  </body>
+<toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
+</html>

@@ -1,0 +1,12 @@
+{
+	"uid": "jia58960",
+	"userName": "jia58960",
+	"secureInfo": {
+		"secureLvl": 30,
+		"isRealNameAuth": 0,
+		"isBindEmail": 0,
+		"isBindPhone": 1,
+		"isPasswordNotSame": 1,
+		"isSecretQus": 0
+	}
+}

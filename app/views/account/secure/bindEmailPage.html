@@ -1,0 +1,68 @@
+<div class="panel-heading">绑定邮箱</div>
+<div class="panel-body">
+
+  <div class="col-xs-4 col-xs-offset-4" ng-show="checkEmailData">
+    加载中。。。
+  </div>
+
+  <form class="form-horizontal secure-forms" ng-show="!checkEmailData && emailData">
+    <div class="form-group">
+      <label class="col-xs-2 control-label">当前邮箱：</label>
+      <div class="col-xs-10">
+        <p class="form-control-static">{{emailData}}</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-12">
+        <p class="form-control-static">如需更换注册邮箱，请 <a href="" class="btn btn-primary btn-xs">点此联系客服</a> </p>
+      </div>
+    </div>
+
+
+  </form>
+
+  <form class="form-horizontal secure-forms" name="bindEmailForm" ng-submit="bindEmail(bindEmailForm)" ng-show="!checkEmailData && !bindStatus && !emailData">
+
+    <div class="form-group" ng-class="{'has-error': bindEmailForm.email.$invalid && bindEmailForm.email.$dirty}">
+      <label for="email" class="col-xs-3 control-label">邮箱：</label>
+      <div class="col-xs-9">
+        <input type="text" class="form-control" id="email" placeholder="输入邮箱" name="email"
+               ng-model="email.email" ng-pattern="/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/"
+                remote-validate="used" />
+        <span class="help-block">绑定邮箱有利于我们及时通知您在企乐融的交易情况以及最新动态。</span>
+        <span class="help-block alert-danger alert slide-down" ng-show="bindEmailForm.email.$error.used">
+                <b>错误：</b>该邮箱已注册！
+              </span>
+      </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': bindEmailForm.email.$invalid && bindEmailForm.email.$dirty}">
+      <label for="payPwd" class="col-xs-3 control-label">支付密码：</label>
+      <div class="col-xs-9">
+        <input type="password" class="form-control" id="payPwd" name="payPwd" placeholder="当前支付密码"
+               ng-model="email.payPwd" ng-required="true">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-offset-3 col-xs-9">
+        <button type="submit" class="btn btn-primary" ng-disabled="bindEmailForm.$invalid || bindEmailForm.$pristine || processing">下一步 <i class="fa fa-spin fa-repeat" ng-show="processing"></i></button>
+      </div>
+    </div>
+  </form>
+
+  <div class="col-xs-10 col-xs-offset-1 margin-top-20" ng-show="bindStatus">
+    <div class="media">
+      <i class="fa fa-check-circle fa-size-md2 text-success pull-left"></i>
+      <div class="media-body">
+        <h5 class="media-heading text-default">我们给你的邮箱 <a href="">{{ user.email }}</a> 发送了一封验证邮件请按照邮箱里的提示在 24 小时内激活你的帐号！</h5>
+        <p>没收到？ <a href="">再次发送</a> </p>
+        <p>
+          <button ui-sref="site.account.secure" class="btn btn-primary">返回安全中心</a></button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>

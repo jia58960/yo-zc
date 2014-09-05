@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 margin-top-10">
+          <!-- enumerate all photos -->
+
+    </div>
+    <div class="col-xs-12">
+      <div class="panel panel-primary margin-top-10">
+        <div class="panel-heading">用户登录</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-7">
+              <img  src="../images/licai_cnt.jpg" />
+            </div>
+
+            <div class="col-xs-4 margin-top-50">
+              <form ng-submit="loginFn()" name="loginForm" class="form-horizontal">
+                <div class="form-section"></div>
+                <div class="form-group">
+                  <div class="col-xs-10">
+                    <div class="input-icon">
+                      <i class="fa fa-user"></i>
+                      <input type="text" autofocus="true" class="form-control" name="userName"
+                             ng-model="login.userName" placeholder="用户名/手机号/邮箱" ng-required="true" autofocus="autofocus">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  
+                    <div class="col-xs-10">
+                    <div class="input-icon">
+                      <i class="fa fa-lock"></i>
+                      <input type="password" class="form-control" name="userPassword" ng-required="true"
+                             ng-model="login.userPassword" placeholder="密码">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group slide-down" ng-show="login.wrong">
+                  <div class="col-xs-10">
+                  <div class="alert alert-danger"><b>错误:</b> 用户名或密码不正确</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-4 col-xs-offset-1">
+                    <div class="checkbox">
+                      <label for="remember">
+                        <input type="checkbox" id="remember" name="remember" ng-model="remember"> 记住我
+                        <i tipped="{skin: 'yellow',hook: 'bottommiddle'}" title="一周内免登陆,公共电脑慎用" class="fa fa-question-circle text-default"></i>
+                       </label>
+                    </div>
+                  </div>
+                  <div class="col-xs-5">
+                    <div class="checkbox">
+                    <a href="">忘记登录密码?</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+
+                  <div class="col-xs-10">
+
+                    <button class="btn btn-danger btn-lg btn-block" type="submit" ng-disabled="login.working">登 录
+                      <i class="fa" ng-class="login.working ? 'fa-cog fa-spin' : 'fa-sign-in'"></i>
+                    </button>
+                  </div>
+
+                </div>
+              </form>
+              <div class="create-account">
+                <div class="col-xs-2"></div>
+                <p>
+                  还没有企乐融账户？
+                  <a ui-sref="anon.register" class="btn btn-info btn-xs">免费注册</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

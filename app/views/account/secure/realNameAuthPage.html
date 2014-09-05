@@ -1,0 +1,73 @@
+  <div class="panel-heading">实名认证</div>
+  <div class="panel-body">
+    <div class="col-xs-4 col-xs-offset-4" ng-show="processing">
+      加载中。。。
+    </div>
+
+    <form class="form-horizontal secure-forms" ng-show="!processing && realNameData">
+      <div class="form-group">
+        <label class="col-xs-2 control-label">姓名：</label>
+        <div class="col-xs-10">
+          <p class="form-control-static">{{realNameData.realName}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-xs-2 control-label">身份证号：</label>
+        <div class="col-xs-10">
+          <p class="form-control-static">{{realNameData.ID}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+          <button type="submit" disabled="disabled" class="btn btn-primary">
+            已认证
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <form name="realNameAuthForm" class="form-horizontal secure-forms" ng-submit="realNameVerify(realNameAuthForm)" ng-show="!processing && !realNameData && !authStatus">
+
+      <div class="form-group" ng-class="{'has-error':realNameAuthForm.realName.$invalid && realNameAuthForm.realName.$dirty}">
+        <label for="realName" class="col-xs-3 control-label">姓名：</label>
+        <div class="col-xs-9">
+          <input type="text" class="form-control" id="realName" name="realName"
+                 ng-pattern="/[\u4E00-\u9FA5\uF900-\uFA2D]/" placeholder="姓名为中文,至少为两个字符" remote-validate="used"
+                 ng-model="realNameAuth.realName" ng-minlength="2">
+          <span class="slide-left help-block alert-danger alert" ng-show="realNameAuthForm.realName.$error.used">
+                            <b>错误：</b>该用户已进行过实名认证
+                          </span>
+        </div>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error':realNameAuthForm.ID.$invalid && realNameAuthForm.ID.$dirty}">
+        <label for="ID" class="col-xs-3 control-label">身份证号：</label>
+        <div class="col-xs-9">
+          <input type="text" class="form-control"
+                 ng-model="realNameAuth.ID" ng-pattern="/^\d{17}(\d|x)$/i" name="ID" id="ID"
+                 placeholder="输入18位正确的身份证号" ng-minlength="18" ng-required="true">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-offset-3 col-xs-9">
+          <button type="submit" ng-disabled="realNameAuthForm.$invalid || realNameAuthForm.$pristine || vertifyPro" class="btn btn-primary"> 认证 <i class="fa fa-repeat fa-spin" ng-show="vertifyPro"></i> </button>
+        </div>
+      </div>
+
+    </form>
+    <div class="col-xs-10 col-xs-offset-1 margin-top-20" ng-show="authStatus">
+    <div class="media">
+      <i class="fa fa-check-circle fa-size-lg text-success pull-left"></i>
+      <div class="media-body">
+        <h3 class="media-heading text-success">实名认证成功！</h3>
+        <p>您的认证信息为:{{realNameAuth.realName}}, {{realNameAuth.ID}}</p>
+        <p>
+          <button ui-sref="site.account.secure" class="btn btn-primary">返回安全中心</a></button>
+        </p>
+      </div>
+    </div>
+    </div>
+  </div>

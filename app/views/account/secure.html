@@ -1,0 +1,234 @@
+  <div class="row">
+    <div class="col-xs-3 margin-top-10">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <ul class="list-unstyled account-center">
+            <li><b><a ui-sref="site.account">{{ secureEntity.uid }}</a></b><a ui-sref="site.account.secure">【安全中心】</a></li>
+            <li>
+              <div class="account-icon">
+                <ul class="list-inline list-unstyled">
+                  <li tipped="{skin: 'green',hook: 'bottommiddle'}" ng-attr-title="{{ (secureEntity.secureInfo.isRealNameAuth) ?'some title':'meitongguo'}}" ng-class="{'ve-name': secureEntity.secureInfo.isRealNameAuth == 1, 'un-name': secureEntity.secureInfo.isRealNameAuth == 0 }" class="icons"></li>
+                  <li ng-class="{'ve-tels': secureEntity.secureInfo.isBindPhone == 1, 'un-tels': secureEntity.secureInfo.isBindPhone == 0 }" class="icons"></li>
+                  <li ng-class="{'ve-pwds': secureEntity.secureInfo.isPasswordNotSame == 1, 'un-pwds': secureEntity.secureInfo.isPasswordNotSame == 0 }" class="icons"></li>
+                </ul>
+              </div>
+            </li>
+            <li class="secure-bar">
+              <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ secureEntity.secureInfo.secureLvl }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ secureEntity.secureInfo.secureLvl }}%">
+                  <span class="sr-only">{{ secureEntity.secureInfo.secureLvl }}% Complete</span>
+                </div>
+              </div>
+            </li>
+            <li class="secure-level" ng-switch on="secureEntity.secureInfo.secureLvl">安全等级：
+              <span ng-switch-when="30" class="text-danger">低</span>
+              <span ng-switch-when="60" class="text-warning">中</span>
+              <span ng-switch--when="100" class="text-success">高</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="list-group account-menu">
+        <li class="list-group-item first-label">
+          <b>快捷入口</b>
+        </li>
+        <li ui-sref-active="active" class="list-group-item">
+          <a ui-sref="site.account.secure.realNameAuth"  data-animation="am-flip-x" data-placement="center" bs-modal="modal">
+            <i class="fa fa-user-md"></i>
+            账户实名认证
+          </a>
+        </li>
+        <li ui-sref-active="active" class="list-group-item">
+          <a ui-sref="site.account.secure.setVerifyModePage">
+            <i class="fa fa-yen"></i>
+            财务交易验证
+          </a>
+        </li>
+        <li ui-sref-active="active" class="list-group-item" ng-if="secureEntity.secureInfo.isSecretQus">
+          <a ui-sref="site.account.secure.modifyLoginPwdPage">
+            <i class="fa fa-lock"></i>
+            修改登录密码
+          </a>
+        </li>
+        <li ui-sref-active="active" class="list-group-item" ng-if="secureEntity.secureInfo.isSecretQus">
+          <a ui-sref="site.account.secure.modifyPayPwd">
+            <i class="fa fa-dollar"></i>
+            修改支付密码
+          </a>
+        </li>
+        <li ui-sref-active="active" class="list-group-item" ng-if="secureEntity.secureInfo.isSecretQus">
+          <a ui-sref="site.account.secure.retrievePayPwd">
+            <i class="fa fa-share-square-o"></i>
+            找回支付密码
+          </a>
+        </li>
+
+        <li ui-sref-active="active" class="list-group-item" ng-if="!secureEntity.secureInfo.isBindPhone">
+          <a ui-sref="site.account.secure.bindMobilePage">
+            <i class="fa fa-mobile-phone"></i>
+            绑定手机
+          </a>
+        </li>
+
+        <li ui-sref-active="active" class="list-group-item" ng-if="secureEntity.secureInfo.isBindPhone">
+          <a ui-sref="site.account.secure.changeMobilePage">
+            <i class="fa fa-mobile-phone"></i>
+            更换绑定手机
+          </a>
+        </li>
+        <li ui-sref-active="active" class="list-group-item" ng-if="!secureEntity.secureInfo.isBindEmail">
+          <a ui-sref="site.account.secure.bindEmailPage">
+            <i class="fa fa-envelope-o"></i>
+            绑定邮箱
+          </a>
+        </li>
+        <li ui-sref-active="active" class="list-group-item" ng-if="secureEntity.secureInfo.isBindEmail">
+          <a ui-sref="site.account.secure.bindEmailPage">
+            <i class="fa fa-envelope-o"></i>
+            更换绑定邮箱
+          </a>
+        </li>
+        <li ui-sref-active="active" class="list-group-item" ng-if="!secureEntity.secureInfo.isSecretQus">
+          <a ui-sref="site.account.secure.setSecretQesPage">
+            <i class="fa fa-key"></i>
+            启用密保问题
+          </a>
+        </li>
+        <li ui-sref-active="active" class="list-group-item" ng-if="secureEntity.secureInfo.isSecretQus">
+          <a ui-sref="site.account.secure.changeSecretQesPage">
+            <i class="fa fa-key"></i>
+            更换密保问题
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-xs-9">
+      <div class="panel panel-default margin-top-10 min-height" ui-view>
+        <div class="panel-heading">安全中心</div>
+        <div class="panel-body">
+          <div class="security-rank">
+            <h5>您的账户安全等级：</h5>
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ secureEntity.secureInfo.secureLvl }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ secureEntity.secureInfo.secureLvl }}%">
+                <span class="sr-only">{{ secureEntity.secureInfo.secureLvl }}% Complete</span>
+              </div>
+            </div>
+          </div>
+          <tabset>
+            <tab heading="账户安全">
+              <ul class="list-unstyled list-inline ul-table">
+                <li class="col_2">
+                  <i class="fa fa-check-circle text-success fa-size-xs"> </i> 登录密码
+                </li>
+                <li class="col_3 text-success">
+                  登录企乐融账户时需要输入的密码
+                </li>
+                <li class="col_4">
+                  <a ui-sref="site.account.secure.setSecretQesPage" ng-if="!secureEntity.secureInfo.isSecretQus">启用密保问题即可修改</a>
+                  <a ui-sref="site.account.secure.modifyLoginPwdPage" ng-if="secureEntity.secureInfo.isSecretQus">去修改</a>
+                </li>
+              </ul>
+
+              <ul class="list-unstyled list-inline ul-table">
+                <li class="col_2">
+                  <i class="fa fa-size-xs"
+                     ng-class="{'text-success fa-check-circle':secureEntity.secureInfo.isRealNameAuth,'text-warning fa-info-circle':!secureEntity.secureInfo.isRealNameAuth}"> </i> 实名认证
+                </li>
+                <li class="col_3">
+                  <span ng-class="{'text-success':secureEntity.secureInfo.isRealNameAuth,'text-warning':!secureEntity.secureInfo.isRealNameAuth}">充值前，必须完成实名认证</span>
+                </li>
+                <li class="col_4">
+                  <a ui-sref="site.account.secure.realNameAuth" ng-if="secureEntity.secureInfo.isRealNameAuth">已认证</a>
+                  <a ui-sref="site.account.secure.realNameAuth" ng-if="!secureEntity.secureInfo.isRealNameAuth">去认证</a>
+                </li>
+              </ul>
+
+              <ul class="list-unstyled list-inline ul-table">
+                <li class="col_2">
+                  <i class="fa fa-size-xs"
+                     ng-class="{'fa-info-circle text-warning':!secureEntity.secureInfo.isBindPhone,'fa-check-circle text-success':secureEntity.secureInfo.isBindPhone}"> </i> 绑定手机
+                </li>
+                <li class="col_3">
+                  <span ng-class="{'text-success':secureEntity.secureInfo.isBindPhone,'text-warning':!secureEntity.secureInfo.isBindPhone}">绑定手机号码，账户资金变动实时通知</span>
+                </li>
+                <li class="col_4">
+                  <a ng-if="secureEntity.secureInfo.isBindPhone" ui-sref="site.account.secure.changeMobilePage">更换</a>
+                  <a ng-if="!secureEntity.secureInfo.isBindPhone" ui-sref="site.account.secure.changeMobilePage">启用</a>
+                </li>
+              </ul>
+
+              <ul class="list-unstyled list-inline ul-table">
+                <li class="col_2">
+                  <i class="fa fa-size-xs"
+                     ng-class="{'text-success fa-check-circle':secureEntity.secureInfo.isPasswordNotSame,'text-warning fa-info-circle':!secureEntity.secureInfo.isPasswordNotSame}"> </i> 支付密码
+                </li>
+                <li class="col_3">
+                  <span ng-if="!secureEntity.secureInfo.isPasswordNotSame" class="text-warning">支付密码默认与登录密码相同，请及时修改!</span>
+                  <span ng-if="secureEntity.secureInfo.isPasswordNotSame" class="text-success">账户资金变动及修改账户信息时需要输入的密码</span>
+                </li>
+                <li class="col_4">
+                  <a ng-if="!secureEntity.secureInfo.isPasswordNotSame" ui-sref="site.account.secure.setSecretQesPage">启用密保问题修改</a>
+                  <a ng-if="secureEntity.secureInfo.isPasswordNotSame" ui-sref="site.account.secure.modifyPayPwd">修改</a> <span ng-if="secureEntity.secureInfo.isPasswordNotSame">|</span> <a ng-if="secureEntity.secureInfo.isPasswordNotSame" ui-sref="site.account.secure.retrievePayPwd">找回</a>
+                </li>
+              </ul>
+
+              <ul class="list-unstyled list-inline ul-table">
+                <li class="col_2">
+                  <i class="fa fa-size-xs"
+                     ng-class="{'text-success fa-check-circle':secureEntity.secureInfo.isSecretQus,'text-warning fa-info-circle':!secureEntity.secureInfo.isSecretQus}"> </i> 密保问题
+                </li>
+                <li class="col_3">
+                  <span ng-class="{'text-warning':!secureEntity.secureInfo.isSecretQus,'text-success':secureEntity.secureInfo.isSecretQus}">轻松找回登录密码</span>
+
+                </li>
+                <li class="col_4">
+                  <a ui-sref="site.account.secure.setSecretQesPage" ng-if="!secureEntity.secureInfo.isSecretQus">启用</a>
+                  <a ui-sref="site.account.secure.changeSecretQesPage" ng-if="secureEntity.secureInfo.isSecretQus">更换密保问题</a>
+                </li>
+              </ul>
+            </tab>
+            <tab heading="隐私安全">
+              <ul class="list-unstyled list-inline ul-table ul-os">
+                <li class="col_1">
+                  身份信息
+                </li>
+                <li class="col_2">
+                  已按照 <a href="">《企乐融投资咨询与管理服务协议》</a> 的相关规定来保护您的身份信息安全
+                </li>
+                <li class="col_3">
+                  <i class="fa fa-check-circle text-success"> </i> 保护中
+                </li>
+              </ul>
+
+              <ul class="list-unstyled list-inline ul-table ul-os">
+                <li class="col_1">
+                  银行卡信息
+                </li>
+                <li class="col_2">
+                  已按照<a href="">《企乐融投资咨询与管理服务协议》</a>的相关规定来保护您的银行卡信息安全
+                </li>
+                <li class="col_3">
+                  <i class="fa fa-check-circle text-success"> </i> <span class="text-success">保护中</span>
+                </li>
+              </ul>
+
+              <ul class="list-unstyled list-inline ul-table ul-os">
+                <li class="col_1">
+                  手机号码
+                </li>
+                <li class="col_2">
+                  已按照<a href="">《企乐融投资咨询与管理服务协议》</a>的相关规定来保护您的手机号码安全
+                </li>
+                <li class="col_3">
+                  <i class="fa fa-check-circle text-success"> </i> 保护中
+                </li>
+              </ul>
+            </tab>
+
+          </tabset>
+        </div>
+      </div>
+    </div>
+
+  </div>

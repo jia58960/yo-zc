@@ -1,0 +1,13 @@
+{
+        "uid": "test",
+        "userName": "test",
+        "financialInfo": {
+            "accountBalance": 12129743.56,
+            "availableBalance": 156223.56,
+            "totalAssets": 62653.23,
+            "cumulativeNetIncome": 2636.12,
+			"todayNetIncome": 223.2,
+            "weighingYieldRate": 0.78
+
+        }
+    }

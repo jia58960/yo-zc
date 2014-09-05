@@ -1,0 +1,126 @@
+.thumbnail .caption h5 {
+	overflow: hidden;
+	height: 40px;
+	line-height: 20px;
+}
+.item-caption {
+	height: 20px;
+	line-height: 20px;
+	color: #A4A4A4;
+	margin-bottom: 10px;
+}
+.thumbnail .caption p {
+	height: 52px;
+	overflow: hidden;
+}
+.item-caption .caption-title {
+	float: left;
+}
+.caption-title em {
+	color: #555;
+	font-style: normal;
+}
+.font-yen {
+font-family: 'Microsoft YaHei',STXihei,MingLiu;
+}
+.item-rate {
+line-height: 18px;
+color: #A4A4A4;
+position: relative;
+}
+.rate1 {
+display: block;
+float: left;
+text-align: left;
+width: 32%;
+}
+.rate2 {
+display: block;
+float: left;
+text-align: center;
+width: 32%;
+}
+.rate3 {
+display: block;
+float: right;
+text-align: right;
+width: 36%;
+}
+.item-rate em {
+	color: #555;
+	font-style: normal;
+}
+/* footer */
+/*footer*/
+.footer {
+    width: 100%;
+    background: #5a5a5a;
+    color: #8c8c8c;
+}
+
+.footer-section {
+    padding: 20px 0px;
+    border-bottom: 1px solid #3a3a3a;
+}
+
+.foot-map {
+    float: left;
+    width: 780px;
+    overflow: hidden;
+}
+
+.foot-map dl {
+    float: left;
+    padding-right: 20px;
+    width: 240px;
+}
+
+.foot-map dl dt {
+    font-size: 14px;
+    color: #ffa349;
+    line-height: 32px;
+}
+
+.foot-map dl dd a {
+    color: #FFF;
+}
+
+.foot-map dl dd em {
+    color: #707070;
+    padding: 0px 7px;
+}
+
+.foot-logo {
+    float: right;
+    padding-top: 20px;
+}
+
+.footer-copy {
+    background: #505050;
+    border-top: 1px solid #757575;
+    padding: 12px 0px;
+}
+
+.ft-links {
+    padding: 5px 0px;
+    color: #DDD;
+}
+
+.ft-links .links-arrow {
+    float: left;
+    font-weight: bold;
+}
+
+.ft-links p {
+    margin-left: 60px;
+}
+
+.ft-links a {
+    font-size: 12px;
+    margin: 0px 5px;
+    color: #DDD !important;
+}
+
+.ft-links a:hover {
+    color: #FFF;
+}

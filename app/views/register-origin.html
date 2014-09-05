@@ -1,0 +1,199 @@
+<div class="container">
+  <div class="row">
+      <!--<div class="col-xs-7 margin-top-10" ng-show="processing">
+
+      </div>-->
+
+      <div class="col-xs-12 margin-top-10">
+          <div class="panel panel-primary" ng-show="processing">
+            <div class="panel-heading">用户注册</div>
+              <div class="panel-body">
+                <div class="row">
+                <div class="col-xs-6"><img src="../images/licai_cnt.jpg" /></div>
+                <div class="col-xs-5">
+                  <form class="form-horizontal" name="registerForm" ng-submit="register(registerForm)">
+                    <div class="form-section"></div>
+
+                    <div class="form-group" ng-class="{'has-error': registerForm.userName.$invalid && registerForm.userName.$dirty}">
+                      <label for="inputEmail1" class="col-xs-3 control-label">用户名</label>
+                      <div class="col-xs-9">
+                        <div class="input-icon">
+                          <i class="fa fa-user"></i>
+                          <input type="text" class="form-control" ng-pattern="/^[a-zA-Z]{1}([a-zA-Z0-9]|[_]){3,17}$/" id="inputEmail1"
+                                 placeholder="字母开头,包含字母、数字、下划线" autofocus="autofocus" remote-validate="used"
+                                 name="userName" ng-model="user.userName" ng-required="true">
+
+                          <span ng-show="registerForm.userName.$error.pattern" class="alert-danger alert slide-down help-block">4-18字符,以字母开头,不能包含特殊字符</span>
+                          <span class="slide-left help-block alert-danger alert" ng-show="registerForm.userName.$error.used">
+                            <b>错误：</b>用户名已被注册
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error': registerForm.userPassword.$invalid && registerForm.userPassword.$dirty}">
+                      <label for="inputPassword" class="col-xs-3 control-label">密码</label>
+                      <div class="col-xs-9">
+                        <div class="input-icon">
+                          <i class="fa fa-lock"></i>
+                          <input type="password" ng-minlength=6 name="userPassword" class="form-control" required id="inputPassword"
+                                 ng-model="user.userPassword" placeholder="6-16个字符" ng-maxlength="16">
+                        <span class="help-block alert-danger alert slide-down"
+                              ng-show="registerForm.userPassword.$error.minlength || registerForm.userPassword.$error.maxlength">
+                          密码为6-16个字符
+                        </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error': registerForm.rePassword.$invalid && registerForm.rePassword.$dirty}">
+                      <label for="rePassword" class="control-label col-xs-3">确认密码</label>
+                      <div class="col-xs-9">
+                        <div class="input-icon">
+                          <i class="fa fa-lock"></i>
+                          <input type="password" class="form-control" name="rePassword" id="rePassword"
+                                 ng-model="rePassword" required placeholder="确认密码">
+                        <span class="help-block alert-danger alert slide-down" ng-show="user.userPassword != rePassword">
+                          密码不匹配
+                        </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error': registerForm.mobilePhone.$invalid && registerForm.mobilePhone.$dirty}">
+                      <label for="inputPhone" class="control-label col-xs-3">手机</label>
+                      <div class="col-xs-9">
+                        <div class="input-icon">
+                          <i class="fa fa-mobile-phone"></i>
+                          <input type="text" ng-maxlength="11" name="mobilePhone" class="form-control" id="inputPhone"
+                                 ng-model="user.mobilePhone" required placeholder="手机号" ng-pattern="/^13[0-9]{9}|15[012356789][0-9]{8}|18[012356789][0-9]{8}|147[0-9]{8}$/">
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--<div class="form-group" ng-class="{'has-error':registerForm.verifyCode.$invalid && registerForm.verifyCode.$dirty}">
+                      <label for="verify" class="control-label col-xs-3">验证码</label>
+                      <div class="col-xs-6">
+                        <div class="input-icon">
+                          <i class="fa fa-key"></i>
+                          <input type="text" name="verifyCode" class="form-control" id="verify" required ng-model="verifyCode" placeholder="验证码">
+                        </div>
+                      </div>
+                      <div class="col-xs-3">
+                        <button class="btn btn-danger">5962</button>
+                      </div>
+                    </div>-->
+
+                    <div class="form-group" ng-class="{'has-error':registerForm.email.$invalid && registerForm.email.$dirty}">
+                      <label for="email" class="control-label col-xs-3">邮箱</label>
+                      <div class="col-xs-9">
+                        <div class="input-icon">
+                          <i class="fa fa-envelope"></i>
+                          <input type="text" class="form-control"
+                                 ng-pattern="/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/"
+                                 id="email" placeholder="邮箱（选填）" remote-validate="used" ng-model="user.email" name="email">
+                          <span class="help-block alert-danger alert slide-down" ng-show="registerForm.email.$invalid">邮箱格式不正确</span>
+                          <span class="slide-down help-block alert alert-danger" ng-show="registerForm.email.$error.used"><b>错误：</b>邮箱被占用</span>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="refName" class="control-label col-xs-3">推荐人</label>
+                      <div class="col-xs-9">
+                        <div class="input-icon">
+                          <i class="fa fa-user"></i>
+                          <input type="text" class="form-control" id="refName" ng-model="user.refName" placeholder="推荐人（选填）">
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error':!term}">
+                      <div class="col-sm-offset-3 col-sm-9">
+                        <div class="checkbox">
+                        <label for="term">
+                          <input type="checkbox" id="term" name="term" ng-model="term"> 阅读并同意企乐融的<a href="">《服务协议》</a>
+                          <span class="help-block alert-danger alert slide-down" ng-hide="term">请阅读并同意企乐融协议!</span>
+                        </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-xs-offset-3 col-xs-9">
+                        <button class="btn btn-block btn-lg btn-success" type="submit"
+                                ng-class="{ 'btn-primary': registerForm.$valid && registerForm.$dirty, 'btn-success': sendMailProcess }"
+                                ng-disabled="registerForm.$invalid || !term || registerForm.$pristine || xhr || sendMailProcess">
+
+                          <span ng-hide="sendMailProcess">立即注册 <i class="fa fa-repeat fa-spin" ng-show="xhr"></i></span>
+                          <span ng-show="sendMailProcess">发送激活邮件... <i class="fa fa-repeat fa-spin"></i></span>
+                        </button>
+                      </div>
+                    </div>
+
+                  </form>
+
+                  <div class="create-account">
+                    <div class="col-xs-5"></div>
+                    <p>
+                      已有企乐融账户？&nbsp;
+                      <a ui-sref="anon.login" id="register-btn" class="btn btn-info btn-xs">马上登录</a>
+                    </p>
+                  </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+      <div class="col-xs-12 margin-top-10" ng-show="!processing">
+        <div class="panel panel-default">
+          <div class="panel-heading">注册成功</div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-8 col-xs-offset-2 margin-top-20">
+
+                  <!--填写了邮箱地址-->
+                  <div class="media" ng-show="sendmailEnd && !xhr">
+                    <i class="fa fa-envelope fa-size-md text-primary pull-left"> </i>
+
+                    <div class="media-body">
+                      <h4 class="media-heading">我们已经给您的邮箱 {{ user.email }} 发送了一封验证邮件.</h4>
+                      <p>请按照邮箱里的提示在 24 小时内激活你的帐号</p>
+                      <p>
+                        <button  class="btn btn-primary">去邮箱查看</button>
+                        没收到？ <button class="btn btn-danger" ng-click="sendEmailAgain()" ng-disabled="sendAgainProcess">
+                        再次发送 <i class="fa fa-repeat" ng-class="{'fa-spin':sendAgainProcess}"></i>
+                      </button>
+                        <span class="help-block">确认邮件是否被你提供的邮箱系统自动拦截，或被误认为垃圾邮件放到垃圾箱了:)</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="media" ng-show="!processing && !sendmailEnd">
+                    <!--没有填写邮箱地址-->
+                    <i class="fa fa-check-circle fa-size-md text-primary pull-left"> </i>
+
+                    <div class="media-body">
+                      <h4 class="media-heading">注册成功！</h4>
+                      <p>
+                        您好！我们检测到您没有填写注册邮箱，您可以 <button class="btn btn-primary btn-sm" ui-sref="anon.login">登 录</button> 后绑定邮箱。
+                      </p>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+
+  </div>
+</div>

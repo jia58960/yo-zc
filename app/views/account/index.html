@@ -1,0 +1,163 @@
+<div class="container" ui-view>
+  <div class="row">
+    <div class="col-xs-3 margin-top-10">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <ul class="list-unstyled account-center">
+            <li><b>Hi,{{ accountInfo.userName }}</b></li>
+            <li>
+              <div class="account-icon">
+                <ul class="list-inline list-unstyled">
+                  <li class="icons ve-name" popover-placement="bottom" popover="测测测测"></li>
+                  <li class="icons un-tels"></li>
+                  <li class="icons ve-pwds"></li>
+                </ul>
+              </div>
+            </li>
+            <li class="secure-bar">
+              <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                  <span class="sr-only">30% Complete</span>
+                </div>
+              </div>
+            </li>
+            <li class="secure-level">安全等级：<span class="text-danger">低</span> <a ui-sref="site.account.secure">【提升】</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="list-group account-menu">
+        <li class="list-group-item first-label">
+          <b>我的账户</b>
+        </li>
+        <li class="list-group-item" ui-sref-active="active">
+          <a ui-sref="site.account">
+            <i class="fa fa-user"> </i> 账户总览
+          </a>
+        </li>
+        <li class="list-group-item" ui-sref-active="active">
+          <a ui-sref="site.account.transactionRecordsPage">
+            <i class="fa fa-dollar"> </i> 交易记录
+          </a>
+        </li>
+        <li class="list-group-item" ui-sref-active="active">
+          <a ui-sref="site.account.rechargeWithdrawPage">
+            <i class="fa fa-money"></i> 充值提现
+          </a>
+        </li>
+        <li class="list-group-item" ui-sref-active="active">
+          <a href="">
+            <i class="fa fa-credit-card"></i> 银行卡
+          </a>
+        </li>
+        <li class="list-group-item" ui-sref-active="active">
+          <a ui-sref="site.account.remindSettingPage">
+            <i class="fa fa-cogs"></i> 提醒设置
+          </a>
+        </li>
+        <li class="list-group-item" ui-sref-active="active">
+          <a ui-sref="site.account.innerMailPage">
+            <i class="fa fa-bell"></i> 消息中心
+          </a>
+        </li>
+
+        <li class="list-group-item first-label">
+          <b>我的投资</b>
+        </li>
+
+        <li class="list-group-item">
+          <a href="">
+            <i class="fa fa-user"> </i> 资产统计
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="">
+            <i class="fa fa-list-ul"> </i> 投资记录
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="">
+            <i class="fa fa-rotate-left"></i> 投资赎回
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="">
+            <i class="fa fa-file-text"></i> 借款协议
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="">
+            <i class="fa fa-android"></i> 自动投资
+          </a>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="col-xs-9 slide-down" ui-view="account-page">
+      <div class="panel panel-default margin-top-10">
+        <div class="panel-heading">账户总览</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-6">
+              <dl class="stats-entry right-border">
+                <dt>
+                  <b>账户余额</b>
+                  <i class="fa fa-question-circle text-info"></i>
+                </dt>
+                <dd><strong><ins>￥</ins>{{ accountInfo.financialInfo.accountBalance }}</strong>
+                  <p>
+                    <span class="light-gray">可用余额</span> ¥{{ accountInfo.financialInfo.availableBalance }}
+                    <i class="fa fa-question-circle text-info"></i>
+                  </p>
+                </dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-6">
+              <dl class="stats-entry">
+                <dt>
+                  <b>账户总资产</b>
+                  <i class="fa fa-question-circle text-info"></i>
+                </dt>
+                <dd>
+                  <strong><ins>￥</ins>{{ accountInfo.financialInfo.totalAssets }}</strong>
+                </dd>
+              </dl>
+            </div>
+
+          </div>
+          <hr/>
+          <div class="row">
+            <div class="col-xs-6">
+              <dl class="stats-entry right-border">
+                <dt>
+                  <b>累计净收益</b>
+                  <i class="fa fa-question-circle text-info"></i>
+                </dt>
+                <dd><strong><span><ins>￥</ins>{{ accountInfo.financialInfo.cumulativeNetIncome }}</span></strong>
+                  <p>
+                    <span class="bk r3">今日净收益¥{{ accountInfo.financialInfo.todayNetIncome }}</span>
+                    <i class="fa fa-question-circle text-info"></i>
+                  </p>
+                </dd>
+              </dl>
+            </div>
+
+            <div class="col-xs-6">
+              <dl class="stats-entry">
+                <dt>
+                  <b>加权收益率</b>
+                  <i class="fa fa-question-circle text-info"></i>
+                </dt>
+                <dd><strong>{{ accountInfo.financialInfo.weighingYieldRate }}</strong> </dd>
+              </dl>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

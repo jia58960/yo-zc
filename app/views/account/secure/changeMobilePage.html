@@ -1,0 +1,120 @@
+<div class="panel-heading">更换密保手机</div>
+<div class="panel-body">
+  <div class="secure-forms">
+    <ul class="nav rc-nav-wizard">
+      <li ng-class="{'active':!currentVertifyStatus && !newVertifyStatus}">
+        <a href="javascript:;" data-toggle="tab">
+          <span class="badge">1</span>
+          <span>验证当前手机</span>
+        </a>
+      </li>
+      <li ng-class="{'active':currentVertifyStatus && !newVertifyStatus}">
+        <a href="javascript:;" data-toggle="tab">
+          <span class="badge">2</span>
+          <span>新手机验证</span>
+        </a>
+      </li>
+      <li ng-class="{'active':currentVertifyStatus && newVertifyStatus}">
+        <a href="javascript:;" data-toggle="tab">
+          <span class="badge">3</span>
+          <span>完成</span>
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content">
+
+      <form class="tab-pane form-horizontal" name="vertifyCurrentMobileForm"
+            ng-submit="verfityCurrentMobile(vertifyCurrentMobileForm)" ng-class="{'active':!currentVertifyStatus && !newVertifyStatus}">
+
+        <div class="form-group">
+          <label class="control-label col-xs-3">当前手机号</label>
+          <div class="col-xs-3">
+            <input name="currentMobile" class="form-control" type="text" ng-model="user.currentMobile" readonly="readonly"/>
+          </div>
+
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': vertifyCurrentMobileForm.vertifyCode.$invalid && vertifyCurrentMobileForm.vertifyCode.$dirty}">
+          <label class="control-label col-xs-3" for="vertifyCode">验证码</label>
+          <div class="col-xs-6">
+            <input type="text" name="vertifyCode" id="vertifyCode" class="form-control"
+                   ng-required="true" ng-model="user.vertifyCode" remote-validate="used" />
+            <span class="help-block alert-danger alert slide-down" ng-show="vertifyCurrentMobileForm.vertifyCode.$error.used">
+              <b>错误：</b>验证码错误
+            </span>
+          </div>
+          <div class="col-xs-3">
+            <button class="btn btn-danger">获取验证码</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-offset-3 col-xs-9">
+            <button class="btn btn-primary" ng-disabled="vertifyCurrentMobileForm.$invalid || vertifyCurrentMobileForm.$pristine || cuProcessing">下一步 <i class="fa fa-spin fa-repeat" ng-show="cuProcessing"></i> </button>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-11 col-xs-offset-1">
+            <p class="help-block">若您收不到短信或手机号码已停止使用，可点此 <button class="btn btn-primary btn-xs" type="button">联系客服</button>,申请人工更换绑定手机</p>
+          </div>
+        </div>
+
+      </form>
+
+      <form class="tab-pane form-horizontal" name="newMobileVertifyForm" ng-submit="newMobileVertify(newMobileVertifyForm)" ng-class="{'active':currentVertifyStatus && !newVertifyStatus}">
+
+        <div class="form-group" ng-class="{'has-error': newMobileVertifyForm.newMobileNum.$invalid && newMobileVertifyForm.newMobileNum.$dirty}">
+          <label class="control-label col-xs-3" for="newMobileNum">新手机号码</label>
+          <div class="col-xs-3">
+            <input name="newMobileNum" class="form-control" type="text" id="newMobileNum" ng-maxlength="11"
+                   ng-required="true" ng-pattern="/^13[0-9]{9}|15[012356789][0-9]{8}|18[012356789][0-9]{8}|147[0-9]{8}$/" ng-model="user.newMobileNum" />
+
+          </div>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': newMobileVertifyForm.newMobileVertifyCode.$invalid && newMobileVertifyForm.newMobileVertifyCode.$dirty}">
+          <label class="control-label col-xs-3">验证码</label>
+          <div class="col-xs-6">
+            <input name="newMobileVertifyCode" class="form-control" type="text"
+                 ng-model="user.newMobileVertifyCode" ng-required="true" remote-validate="used" />
+              <span class="help-block alert-danger alert slide-down" ng-show="newMobileVertifyForm.newMobileVertifyCode.$error.used">
+                <b>错误：</b>验证码错误
+              </span>
+          </div>
+          <div class="col-xs-3">
+            <button class="btn btn-danger">获取验证码</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-offset-3 col-xs-9">
+            <button class="btn btn-primary" ng-disabled="newMobileVertifyForm.$invalid || newMobileVertifyForm.$pristine || newProcessing">绑定 <i class="fa fa-spin fa-repeat" ng-show="newProcessing"></i></button>
+          </div>
+        </div>
+
+      </form>
+
+      <form class="tab-pane form-horizontal" name="lastForm" ng-class="{'active':currentVertifyStatus && newVertifyStatus}">
+        <div class="form-group secure-forms">
+          <div class="col-xs-offset-1 col-xs-11">
+            <div class="media">
+              <a class="pull-left" href="#">
+                <i class="fa fa-check-circle fa-size-md2 text-success"></i>
+              </a>
+              <div class="media-body">
+                <h5 class="media-heading">更换绑定手机成功！</h5>
+                <span class="help-block">您可以使用新手机号进行相关验证操作</span>
+                <p>
+                  <button ui-sref="site.account.secure" class="btn btn-primary">返回安全中心</button></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>

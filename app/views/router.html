@@ -1,0 +1,48 @@
+<div class="header navbar navbar-default navbar-static-top no-scrolling-fixed">
+  <!--<div class="front-topbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-8">
+          <ul class="list-unstyle inline" style="padding-left: 0px">
+            <li><i class="fa fa-phone"></i> 客服热线: <span>0755-66659000</span></li>
+            <li class="sep"><span>|</span></li>
+            <li><i class="fa fa-envelope"></i> 客服邮箱: <span>jia58960@gmail.com</span></li>
+            <li class="sep"><span>|</span></li>
+            <li>关注我们: <a href=""><i class="fa fa-weibo"> </i> </a> <a href=""><i class="fa fa-weixin"></i></a>  </li>
+          </ul>
+        </div>
+        <div class="col-xs-4 login-reg-links">
+
+          <ul class="list-unstyled inline" ng-hide="isLogged">
+            <li>您好，欢迎您！</li>
+            <li><a ui-sref="anon.login">[立即登录]</a></li>
+            <li><a ui-sref="anon.register" class="text-success">[免费注册]</a></li>
+          </ul>
+          <ul class="list-unstyled inline" ng-show="isLogged">
+            <li>欢迎你，<a ui-sref="site.account({uid:user.userName})">{{ user.userName }}</a>！<a href="javascript:;" ng-click="logout()">[退出]<i class="fa fa-signout"></i></a></li>
+            <li class="sep"><span>|</span></li>
+            <li><a ui-sref="site.account.secure({uid:user.userName})">安全中心</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>-->
+
+  <div class="header">
+    <div class="container">
+
+			<div class="navbar-header">
+				<a href="../" class="navbar-brand">Bootstrap</a>
+			</div>
+
+			<div ui-view="nav"></div>
+
+    </div>
+  </div>
+
+</div>
+
+<div ui-view="body"></div>
+
+<div ui-view="footer"></div>
+

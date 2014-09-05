@@ -1,0 +1,12 @@
+{
+    "uid": "jia58960",
+    "userName": "jia58960",
+    "financialInfo": {
+        "accountBalance": 123.56,
+        "availableBalance": 123.56,
+        "totalAssets": 253.23,
+        "todayNetIncome": 23.2,
+        "cumulativeNetIncome": 23.12,
+        "weighingYieldRate": 0.03
+   }
+}

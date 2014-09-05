@@ -1,0 +1,180 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel margin-top-10">
+        <div class="panel-body">
+          <h4>项目详情</h4>
+          <hr/>
+            <div class="row">
+              <div class="col-xs-8">
+                <div class="panel panel-default">
+                  <div class="panel-heading"><b>安居宝A20140417149</b></div>
+                  <div class="panel-body">
+                    <div class="profit">
+                      <dl class="f">
+                        <dt>借款金额</dt>
+                        <dd>
+                          <ins>￥</ins>
+                          <em>50,000</em>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>
+                          <b>年化利率</b>
+                        </dt>
+                        <dd>
+                          <em>12</em><span class="flot">.00</span>%
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>还款方式</dt>
+                        <dd>
+                          <div class="refund-way text-success">一次性还款</div>
+                        </dd>
+                      </dl>
+                    </div>
+
+                    <div class="expl">
+                      <ul class="list-unstyled">
+                        <li>
+                          随时转出，资金可取现
+                        </li>
+                        <li>发标时间： 2014-05-20</li>
+                        <li>到期时间： 2014-06-20</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xs-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading"><b>投资金额</b></div>
+                  <div class="panel-body">
+
+                    <form name="investForm" action="" rc-submit="inverst()" rc-disabled="rc.investForm.submitInProgress">
+
+                      <div class="form-group" ng-class="{'has-error': rc.investForm.needsAttention(investForm.investAmount)}">
+                        <label for="investAmount">投资金额</label>
+                        <div class="input-icon">
+                          <i class="fa fa-user"></i>
+                          <input type="text" class="form-control" id="investAmount" name="investAmount" required ng-model="invest.investAmount" placeholder="输入投资金额">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label>预计收益</label>
+                        <b class="text-success">￥:20,236</b>
+                      </div>
+
+                      <div class="form-group" ng-class="{'has-error': rc.investForm.needsAttention(investForm.vertifyCode)}">
+                        <label for="vertifyCode">验证码</label>
+                        <div class="input-icon">
+                          <i class="fa fa-key"></i>
+                          <input type="password" class="form-control" id="vertifyCode" name="vertifyCode" required ng-model="invest.vertifyCode" placeholder="输入验证码">
+                          <img src="" width="90px" height="30px" alt=""/>
+                        </div>
+                      </div>
+
+                      <div class="checkbox" ng-class="{'has-error': rc.investForm.needsAttention(investForm.term)}">
+                        <label>
+                          <input type="checkbox" name="term" ng-model="invest.term"> 同意 <a href="">《其乐融管理协议》</a>
+                        </label>
+                      </div>
+
+                      <button class="btn btn-primary btn-block" type="submit" ng-disabled="investForm.$invalid">我要投资</button>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xs-12">
+                <hr/>
+                <tabset>
+                  <tab heading="产品详情">
+                    <ol>
+                      <li>不错的产品</li>
+                      <li>不错的产品</li>
+                      <li>不错的产品</li><li>不错的产品</li>
+                      <li>不错的产品</li>
+
+                    </ol>
+                  </tab>
+                  <tab heading="投资记录">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="panel">
+                          <div class="panel-body">
+                            <table class="table pro-list">
+                              <thead>
+                              <tr>
+                                <th>投资人</th>
+                                <th>投标金额</th>
+                                <th>投资时间</th>
+                                <th>状态</th>
+                              </tr>
+
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>jia***0</td>
+                                  <td>1,000.00</td>
+                                  <td>2014.02.23 12:20</td>
+                                  <td><i class="fa fa-check-circle text-success"> </i> 成功</td>
+                                </tr>
+                                <tr>
+                                  <td>jia***0</td>
+                                  <td>1,000.00</td>
+                                  <td>2014.02.23 12:20</td>
+                                  <td><i class="fa fa-check-circle text-success"> </i> 成功</td>
+                                </tr>
+                                <tr>
+                                  <td>jia***0</td>
+                                  <td>1,000.00</td>
+                                  <td>2014.02.23 12:20</td>
+                                  <td><i class="fa fa-check-circle text-success"> </i> 成功</td>
+                                </tr>
+                                <tr>
+                                  <td>jia***0</td>
+                                  <td>1,000.00</td>
+                                  <td>2014.02.23 12:20</td>
+                                  <td><i class="fa fa-check-circle text-success"> </i> 成功</td>
+                                </tr>
+                                <tr>
+                                  <td>jia***0</td>
+                                  <td>1,000.00</td>
+                                  <td>2014.02.23 12:20</td>
+                                  <td><i class="fa fa-check-circle text-success"> </i> 成功</td>
+                                </tr>
+                                <tr>
+                                  <td>jia***0</td>
+                                  <td>1,000.00</td>
+                                  <td>2014.02.23 12:20</td>
+                                  <td><i class="fa fa-check-circle text-success"> </i> 成功</td>
+                                </tr>
+                                <tr>
+                                  <td>jia***0</td>
+                                  <td>1,000.00</td>
+                                  <td>2014.02.23 12:20</td>
+                                  <td><i class="fa fa-check-circle text-success"> </i> 成功</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <div style="text-align: center">
+                              <pagination total-items="64" page="3" max-size="3" class="pagination-sm" boundary-links="true"></pagination>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </tab>
+                </tabset>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+
+</div>

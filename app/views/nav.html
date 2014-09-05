@@ -1,0 +1,24 @@
+  <!-- END TOP BAR -->
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav nav-header">
+          <li ui-sref-active="active"><a ui-sref="site.index">首页</a></li>
+          <li ui-sref-active="active"><a ui-sref="site.list">我的帐套</a></li>
+          <li ui-sref-active="active"><a href="#contact">套餐管理</a></li>
+          <li ui-sref-active="active"><a ui-sref="site.help">帮助中心</a></li>
+          <li><a href="#contact">关于我们</a></li>
+        </ul>
+
+					<ul class="nav navbar-nav navbar-right" ng-hide="isLogged">
+							<li><a ui-sref="anon.login">[立即登录]</a></li>
+							<li><a ui-sref="anon.register" class="text-success">[免费注册]</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right" ng-show="isLogged">
+							<li><a ui-sref="site.account({uid:user.userName})">{{ user.userName }}</a><a href="javascript:;" ng-click="logout()">[退出]<i class="fa fa-signout"></i> </a></li>
+							<li><a ui-sref="site.account.secure({uid:user.userName})">安全中心</a></li>
+					</ul>
+
+      </div>
+    </div>
+  </nav>

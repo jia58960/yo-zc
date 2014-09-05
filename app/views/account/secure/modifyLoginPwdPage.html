@@ -1,0 +1,66 @@
+<div class="panel-heading">修改登录密码</div>
+<div class="panel-body">
+  <form class="form-horizontal secure-forms" name="modifyLoginPwdForm" ng-submit="updateLoginPwd(modifyLoginPwdForm)" ng-show="!modifyStatus">
+
+    <div class="form-group" ng-class="{'has-error': modifyLoginPwdForm.currentPwd.$invalid && modifyLoginPwdForm.currentPwd.$dirty}">
+      <label for="currentPwd" class="col-xs-3 control-label">当前登录密码：</label>
+      <div class="col-xs-9">
+        <input type="password" class="form-control" id="currentPwd" name="currentPwd"
+               placeholder="当前登录密码" ng-model="user.currentPwd" remote-validate="used" ng-required="true">
+
+        <span class="slide-left help-block alert-danger alert" ng-show="modifyLoginPwdForm.currentPwd.$error.used">
+            <b>错误：</b>当前密码输入错误
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': modifyLoginPwdForm.newPassword.$invalid && modifyLoginPwdForm.newPassword.$dirty}">
+      <label for="newPassword" class="col-xs-3 control-label">新密码：</label>
+      <div class="col-xs-9">
+        <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="新密码6-16个字符"
+               ng-model="user.newPassword" ng-required="true" ng-minlength="6" ng-maxlength="16" remote-validate="used">
+        <span class="help-block alert-danger alert slide-down"
+              ng-show="modifyLoginPwdForm.newPassword.$error.minlength || modifyLoginPwdForm.newPassword.$error.maxlength">
+                          密码为6-16个字符
+                        </span>
+        <span class="help-block alert-danger alert slide-down" ng-show="modifyLoginPwdForm.newPassword.$error.used">
+              <b>错误：</b>新密码与当前支付密码不能相同
+        </span>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': modifyLoginPwdForm.rePassword.$invalid && modifyLoginPwdForm.rePassword.$dirty}">
+      <label for="inputRePassword3" class="col-xs-3 control-label">确认新密码：</label>
+      <div class="col-xs-9">
+        <input type="password" class="form-control" id="inputRePassword3" placeholder="确认新密码" ng-model="rePassword" name="rePassword">
+        <span class="help-block alert-danger alert slide-down" ng-show="user.newPassword != rePassword">
+              两次输入密码不匹配
+        </span>
+        <p class="help-block">请定期修改密码，6-16个字符，建议使用字母加数字或符号的组合密码</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-offset-3 col-xs-9">
+        <button type="submit" class="btn btn-primary"
+                ng-disabled="modifyLoginPwdForm.$invalid || modifyLoginPwdForm.$pristine || processing">
+          确定
+           <span class="fa fa-repeat fa-spin" ng-show="processing"></span>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="col-xs-10 col-xs-offset-1 margin-top-20" ng-show="modifyStatus">
+    <div class="media">
+      <i class="fa fa-check-circle fa-size-md2 text-success pull-left"></i>
+      <div class="media-body">
+        <h3 class="media-heading text-success">登录密码修改成功！</h3>
+        <p>要记住定期修改登录密码哦</p>
+        <p>
+          <button ui-sref="site.account.secure" class="btn btn-primary">返回安全中心</a></button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>

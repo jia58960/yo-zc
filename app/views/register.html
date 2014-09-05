@@ -1,0 +1,266 @@
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12 margin-top-10">
+          <div class="panel panel-primary">
+            <div class="panel-heading">用户注册</div>
+              <div class="panel-body">
+
+                <div class="row">
+                <div class="secure-forms">
+                  <div class="col-xs-8 col-xs-offset-2">
+                    <ul class="nav rc-nav-wizard">
+                      <li ng-class="{'active':!registerStatus && !vertifyStatus}">
+                        <a href="javascript:;" data-toggle="tab">
+                          <span class="badge">1</span>
+                          <span>填写账户信息</span>
+                        </a>
+                      </li>
+                      <li ng-class="{'active':registerStatus && !vertifyStatus}">
+                        <a href="javascript:;" data-toggle="tab">
+                          <span class="badge">2</span>
+                          <span>验证账户信息</span>
+                        </a>
+                      </li>
+                      <li ng-class="{'active':registerStatus && vertifyStatus}">
+                        <a href="javascript:;" data-toggle="tab">
+                          <span class="badge">3</span>
+                          <span>注册成功</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="col-xs-8 col-xs-offset-2 reg-processbar">
+                    <div class="progress progress-striped active">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%">
+                        <span class="sr-only">{{progress}}% Complete</span>
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="col-xs-10 col-xs-offset-1">
+                  <div class="tab-content">
+                    <form class="tab-pane form-horizontal" name="registerForm"
+                          ng-submit="register(registerForm)" ng-class="{'active':!registerStatus && !vertifyStatus}">
+
+                      <div class="form-group" ng-class="{'has-error': registerForm.userName.$invalid && registerForm.userName.$dirty}">
+                        <label for="inputEmail1" class="col-xs-3 control-label">用户名</label>
+                        <div class="col-xs-5">
+                          <div class="input-icon">
+                            <i class="fa fa-user"></i>
+                            <input type="text" class="form-control" ng-pattern="/^[a-zA-Z]{1}([a-zA-Z0-9]|[_]){3,17}$/" id="inputEmail1"
+                                   placeholder="字母开头,包含字母、数字、下划线" autofocus="autofocus" remote-validate="used"
+                                   name="userName" ng-model="user.userName" required ng-focus>
+
+                            <span ng-show="registerForm.userName.$error.pattern && !registerForm.userName.$focused" class="alert-danger alert slide-down help-block">4-18字符,以字母开头,不能包含特殊字符</span>
+                          <span class="slide-left help-block alert-danger alert" ng-show="registerForm.userName.$error.used">
+                            <b>错误：</b>用户名已被注册
+                          </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group" ng-class="{'has-error': registerForm.userPassword.$invalid && registerForm.userPassword.$dirty}">
+                        <label for="inputPassword" class="col-xs-3 control-label">密码</label>
+                        <div class="col-xs-4">
+                          <div class="input-icon">
+                            <i class="fa fa-lock"></i>
+                            <input type="password" ng-minlength=6 name="userPassword" class="form-control" required ng-focus="" id="inputPassword"
+                                   ng-model="user.userPassword" placeholder="6-16个字符" ng-maxlength="16">
+                        <span class="help-block alert-danger alert slide-down"
+                              ng-show="(registerForm.userPassword.$error.minlength || registerForm.userPassword.$error.maxlength) && !registerForm.userPassword.$focused">
+                          密码为6-16个字符
+                        </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group" ng-class="{'has-error': registerForm.rePassword.$invalid && registerForm.rePassword.$dirty}">
+                        <label for="rePassword" class="control-label col-xs-3">确认密码</label>
+                        <div class="col-xs-4">
+                          <div class="input-icon">
+                            <i class="fa fa-lock"></i>
+                            <input type="password" class="form-control" name="rePassword" id="rePassword"
+                                   ng-model="rePassword" required ng-focus="" placeholder="确认密码">
+                        <span class="help-block alert-danger alert slide-down" ng-show="(user.userPassword != rePassword) && !registerForm.rePassword.$focused">
+                          密码不匹配
+                        </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--<div class="form-group" ng-class="{'has-error':registerForm.verifyCode.$invalid && registerForm.verifyCode.$dirty}">
+                         <label for="verify" class="control-label col-xs-3">验证码</label>
+                          <div class="col-xs-3">
+                            <div class="input-icon">
+                              <i class="fa fa-key"></i>
+                              <input type="text" name="verifyCode" class="form-control" id="verify" required ng-model="verifyCode" placeholder="验证码">
+                            </div>
+                          </div>
+                          <div class="col-xs-3">
+                            <button class="btn btn-danger">5962</button>
+                          </div>
+                      </div>-->
+
+                      <div class="form-group">
+                        <label for="refName" class="control-label col-xs-3">推荐人</label>
+                        <div class="col-xs-3">
+                          <div class="input-icon">
+                            <i class="fa fa-user"></i>
+                            <input type="text" class="form-control" id="refName" ng-model="user.refName" placeholder="推荐人（选填）">
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group" ng-class="{'has-error':!term}">
+                        <div class="col-sm-offset-3 col-sm-9">
+                          <div class="checkbox">
+                            <label for="term">
+                              <input type="checkbox" id="term" name="term" ng-model="term"> 阅读并同意企乐融的<a href="">《服务协议》</a>
+                              <span class="help-block alert-danger alert slide-down" ng-hide="term">请阅读并同意企乐融协议!</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="col-xs-offset-3 col-xs-9">
+                          <button class="btn btn-primary" ng-disabled="registerForm.$invalid || user.userPassword != rePassword || registerForm.$pristine || !term  || processing">下一步 <i class="fa fa-spin fa-repeat" ng-show="processing"></i> </button>
+
+                        </div>
+                      </div>
+                    </form>
+
+                    <div class="tab-pane" ng-class="{'active':registerStatus && !vertifyStatus}" >
+
+                      <form class="form-horizontal" name="regMobileVertifyForm" ng-submit="mobileVertifyPro(regMobileVertifyForm)" ng-show="mobileVertify">
+                        <div class="form-group" ng-class="{'has-error': regMobileVertifyForm.newMobileNum.$invalid && regMobileVertifyForm.newMobileNum.$dirty}">
+                          <label class="control-label col-xs-3" for="newMobileNum">手机号码</label>
+                          <div class="col-xs-3">
+                            <div class="input-icon">
+                              <i class="fa fa-mobile-phone"></i>
+                              <input name="newMobileNum" class="form-control" type="text" id="newMobileNum" ng-maxlength="11" placeholder="手机号码"
+                                   ng-required="true" ng-pattern="/^13[0-9]{9}|15[012356789][0-9]{8}|18[012356789][0-9]{8}|147[0-9]{8}$/" ng-model="mobileV.newMobileNum" ng-focus />
+															<span class="help-block alert-danger alert slide-down"
+																		ng-show="regMobileVertifyForm.newMobileNum.$error.pattern && !regMobileVertifyForm.newMobileNum.$focused">
+                          手机号格式不正确
+                        </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': regMobileVertifyForm.newMobileVertifyCode.$invalid && regMobileVertifyForm.newMobileVertifyCode.$dirty}">
+                          <label class="control-label col-xs-3">验证码</label>
+                          <div class="col-xs-2">
+                            <input name="newMobileVertifyCode" class="form-control" type="text"
+                                   ng-model="mobileV.vertifyCode" ng-required="true" remote-validate="used" />
+                        <span class="help-block alert-danger alert slide-down" ng-show="regMobileVertifyForm.newMobileVertifyCode.$error.used">
+                          <b>错误：</b>验证码错误
+                        </span>
+                          </div>
+                          <div class="col-xs-3">
+                            <button class="btn btn-danger">获取验证码</button>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="col-xs-offset-3 col-xs-9">
+                            <button class="btn btn-primary" ng-disabled="regMobileVertifyForm.$invalid || regMobileVertifyForm.$pristine || mobileVertifyProcessing">下一步 <i class="fa fa-spin fa-repeat" ng-show="mobileVertifyProcessing"></i></button>
+                          </div>
+                        </div>
+
+                      </form>
+
+                      <form class="form-horizontal" name="regEmailVertifyForm" ng-submit="emailVertifyPro(regEmailVertifyForm)" ng-show="emailVertify && !emailVertifyStatus">
+                        <div class="form-group" ng-class="{'has-error':regEmailVertifyForm.email.$invalid && regEmailVertifyForm.email.$dirty}">
+                          <label for="email" class="control-label col-xs-3">邮箱</label>
+                          <div class="col-xs-6">
+                            <div class="input-icon">
+                              <i class="fa fa-envelope"></i>
+                              <input type="text" class="form-control"
+                                     ng-pattern="/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/"
+                                     id="email" placeholder="邮箱地址" remote-validate="used" ng-model="emailV.email" name="email">
+                              <span class="help-block alert-danger alert slide-down" ng-show="regEmailVertifyForm.email.$invalid">邮箱格式不正确</span>
+                              <span class="slide-down help-block alert alert-danger" ng-show="regEmailVertifyForm.email.$error.used"><b>错误：</b>邮箱被占用</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="col-xs-offset-3 col-xs-9">
+                            <button class="btn btn-primary" ng-disabled="regEmailVertifyForm.$invalid || regEmailVertifyForm.$pristine || emailVertifyProcessing">下一步 <i class="fa fa-spin fa-repeat" ng-show="emailVertifyProcessing"></i></button>
+                          </div>
+                        </div>
+
+                      </form>
+                      <div class="form-group" ng-show="!emailVertifyStatus">
+                        <div class="col-xs-8 col-xs-offset-1 create-account">
+                          你也可以选择使用 <a ng-click="toggle()" href="javascript:;"><span ng-show="mobileVertify">[邮箱验证]</span> <span ng-show="emailVertify">[手机验证]</span></a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <form class="form-horizontal" name="emailSuccess" ng-show="emailVertifyStatus">
+                      <div class="form-group">
+                        <div class="col-xs-8 col-xs-offset-2">
+                          <div class="media">
+                            <i class="fa fa-envelope fa-size-md text-primary pull-left"> </i>
+                            <div class="media-body">
+                              <h4 class="media-heading">我们已经给您的邮箱 {{ emailV.email }} 发送了一封验证邮件.</h4>
+                              <p>请按照邮箱里的提示在 24 小时内激活你的帐号</p>
+                              <p>
+                                <button  class="btn btn-primary">去邮箱查看</button>
+                                没收到？ <button class="btn btn-danger" ng-click="sendEmailAgain()" ng-disabled="sendAgainProcess">
+                                再次发送 <i class="fa fa-repeat" ng-class="{'fa-spin':sendAgainProcess}"></i>
+                              </button>
+                                <span class="help-block">确认邮件是否被拦截,或被误认为垃圾邮件放到垃圾箱了:)</span>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+
+                    <form class="tab-pane form-horizontal" name="lastForm" ng-class="{'active':registerStatus && vertifyStatus}">
+                      <div class="form-group secure-forms">
+                        <div class="col-xs-offset-2 col-xs-8">
+                          <div class="media">
+                            <a class="pull-left" href="#">
+                              <i class="fa fa-check-circle fa-size-md2 text-success"></i>
+                            </a>
+                            <div class="media-body">
+                              <h3 class="media-heading text-success"> {{ user.userName }},恭喜你注册成功！</h3>
+                              <span class="help-block"></span>
+                              <p><a class="btn btn-primary" ui-sref="anon.login">立即登录</a> 或进入<a ui-sref="site.index">首页</a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  </div>
+                </div>
+
+               <!-- <div class="col-xs-5">
+
+
+                  <div class="create-account">
+                    <div class="col-xs-5"></div>
+                    <p>
+                      已有企乐融账户？&nbsp;
+                      <a ui-sref="anon.login" id="register-btn" class="btn btn-info btn-xs">马上登录</a>
+                    </p>
+                  </div>
+                </div>-->
+                </div>
+            </div>
+        </div>
+
+
+
+
+      </div>
+
+  </div>
+</div>

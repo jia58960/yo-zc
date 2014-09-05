@@ -1,0 +1,55 @@
+<div class="panel-heading">绑定手机</div>
+<div class="panel-body">
+
+  <form class="form-horizontal secure-forms" name="bindMobileForm" ng-submit="bindMobile(bindMobileForm)" ng-show="!bindStatus">
+
+    <div class="form-group" ng-class="{'has-error': bindMobileForm.mobileNum.$invalid && bindMobileForm.mobileNum.$dirty}">
+      <label for="mobileNum" class="col-xs-3 control-label">手机号码：</label>
+      <div class="col-xs-6">
+        <input type="text" class="form-control" id="mobileNum" name="mobileNum" placeholder="输入手机号"
+               ng-model="user.mobileNum" ng-required="true" ng-maxlength="11" ng-pattern="/^13[0-9]{9}|15[012356789][0-9]{8}|18[012356789][0-9]{8}|147[0-9]{8}$/" />
+      </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': bindMobileForm.vertifyCode.$invalid && bindMobileForm.vertifyCode.$dirty}">
+      <label for="vertifyCode" class="col-xs-3 control-label">验证码：</label>
+      <div class="col-xs-3">
+        <input type="text" class="form-control" id="vertifyCode" name="vertifyCode" placeholder="输入验证码"
+               ng-model="user.vertifyCode" ng-required="true" remote-validate="used" />
+              <span class="help-block alert-danger alert slide-down" ng-show="bindMobileForm.vertifyCode.$error.used">
+                <b>错误：</b>验证码错误
+              </span>
+      </div>
+
+      <div class="col-xs-3">
+        <button class="btn btn-danger" type="button">获取验证码</button>
+      </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': bindMobileForm.payPwd.$invalid && bindMobileForm.payPwd.$dirty}">
+      <label for="inputPassword3" class="col-xs-3 control-label">支付密码：</label>
+      <div class="col-xs-6">
+        <input type="password" class="form-control" id="inputPassword3" name="payPwd" placeholder="输入您当前的支付密码" ng-model="user.payPwd" ng-required="true">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-offset-3 col-xs-9">
+        <button type="submit" class="btn btn-primary" ng-disabled="bindMobileForm.$invalid || bindMobileForm.$pristine || processing">绑定 <i class="fa fa-spin fa-repeat" ng-show="processing"></i></button>
+      </div>
+    </div>
+  </form>
+
+  <div class="col-xs-10 col-xs-offset-1 margin-top-20" ng-show="bindStatus">
+    <div class="media">
+      <i class="fa fa-check-circle fa-size-md2 text-success pull-left"></i>
+      <div class="media-body">
+        <h3 class="media-heading text-success">绑定手机成功！</h3>
+        <p>绑定手机有利于我们及时通知您在企乐融的交易情况。</p>
+        <p>
+          <button ui-sref="site.account.secure" class="btn btn-primary">返回安全中心</a></button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

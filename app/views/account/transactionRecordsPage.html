@@ -1,0 +1,123 @@
+  <div class="row">
+    <div class="col-xs-12 margin-top-10">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">交易记录</div>
+        <div class="panel-body">
+          <form class="form-horizontal">
+            <div class="form-body">
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <label class="control-label col-xs-3"><b>起始日期:</b></label>
+                    <div class="input-group col-xs-9">
+                      <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </span>
+                      <input type="text" datepicker-popup="yyyy-MM-dd"  ng-required="true" close-text="关闭"
+                             ng-model="qStartTime" class="form-control input-sm" placeholder="起始日期" readonly="readonly">
+
+                    </div>
+                  </div>
+                </div>
+                <!--/span-->
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <label class="control-label col-xs-3"><b>结束日期:</b></label>
+                    <div class="col-xs-9 input-group">
+                      <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </span>
+                      <input type="text" datepicker-popup="yyyy-MM-dd"  ng-required="true" close-text="关闭"
+                             ng-model="qEndTime" class="form-control input-sm" placeholder="起始日期" readonly="readonly">
+                    </div>
+                  </div>
+                </div>
+                <!--/span-->
+              </div>
+              <!--/row-->
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label class="control-label col-xs-3"><b>快速筛选:</b></label>
+                    <div class="col-xs-9">
+                      <a href="javascript:;" class="btn btn-default btn-sm active">最近7天</a>
+                      <a href="javascript:;" class="btn btn-default btn-sm" data="1">1个月</a>
+                      <a href="javascript:;" class="btn btn-default btn-sm" data="2">2个月</a>
+                      <a href="javascript:;" class="btn btn-default btn-sm" data="3">3个月</a>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+             <div class="row">
+               <div class="col-xs-12">
+                   <div class="form-group">
+                     <label class="control-label col-xs-3"><b>交易类型:</b></label>
+                     <div class="col-xs-9">
+                       <a href="javascript:;" class="btn btn-default btn-sm active">全部</a>
+                       <a href="javascript:;" class="btn btn-default btn-sm" data="1">充值</a>
+                       <a href="javascript:;" class="btn btn-default btn-sm" data="2">提现</a>
+                       <a href="javascript:;" class="btn btn-default btn-sm" data="3">投资</a>
+                       <a href="javascript:;" class="btn btn-default btn-sm" data="4">回收利息</a>
+                       <a href="javascript:;" class="btn btn-default btn-sm" data="5">回收本金</a>
+
+                     </div>
+                   </div>
+
+               </div>
+             </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+    <div class="panel panel-default">
+
+        <table class="table table-hover">
+          <thead>
+            <tr class="active">
+              <th>时间</th>
+              <th>交易类型 | 流水号</th>
+              <th>对方</th>
+              <th>金额(¥) | 明细</th>
+              <th>可用余额(¥)</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>2014.05.06</td>
+            <td>提现 | 20140506122523</td>
+            <td>XXXX</td>
+            <td>￥20,256,23 | 提取现金</td>
+            <td>￥20,256,23</td>
+          </tr>
+          <tr>
+            <td>2014.05.06</td>
+            <td>提现 | 20140506122523</td>
+            <td>XXXX</td>
+            <td>￥20,256,23 | 提取现金</td>
+            <td>￥20,256,23</td>
+          </tr>
+          <tr>
+            <td>2014.05.06</td>
+            <td>提现 | 20140506122523</td>
+            <td>XXXX</td>
+            <td>￥20,256,23 | 提取现金</td>
+            <td>￥20,256,23</td>
+          </tr>
+          </tbody>
+          </table>
+        </div>
+  </div>
+  </div>
+
+
+
+
+

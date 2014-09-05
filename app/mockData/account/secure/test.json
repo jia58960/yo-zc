@@ -1,0 +1,12 @@
+{
+	"uid": "test",
+	"userName": "test",
+	"secureInfo": {
+		"secureLvl": 30,
+		"isRealNameAuth": 0,
+		"isBindEmail": 0,
+		"isBindPhone": 0,
+		"isPasswordNotSame": 0,
+		"isSecretQus": 0
+	}
+}

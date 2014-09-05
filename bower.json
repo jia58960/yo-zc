@@ -1,0 +1,41 @@
+{
+  "name": "yo-zc",
+  "version": "0.1.0",
+  "description": "Yet another amazing AngularJS app",
+  "keywords": [
+    "angular"
+  ],
+  "homepage": "https://github.com/jia58960/yo-zc",
+  "bugs": "https://github.com/jia58960/yo-zc/issues",
+  "author": {
+    "name": "CherryJia",
+    "email": "547221469@qq.com",
+    "url": "https://github.com/jia58960"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jia58960/yo-zc.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.0",
+    "font-awesome": "~4.0.0",
+    "angular-ui-router": "~0.2.0",
+    "angular-animate": "~1.2.10",
+    "angular-i18n": "~1.2.10",
+    "angular-resource": "~1.2.10",
+    "angular": "~1.2.10",
+    "angular-bootstrap": "~0.10.0",
+    "requirejs": "~2.1.11",
+    "requirejs-domready": "~2.0.1",
+    "angular-mocks": "~1.2.16",
+    "angular-flexslider": "~1.0.0",
+    "AngularJS-Toaster": "~0.4.6",
+    "angular-tipped": "~0.1.2",
+    "angular-motion": "~0.3.2"
+  }
+}
